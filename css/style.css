@@ -1,0 +1,402 @@
+/* File 2: style.css */
+/* Fixed Carousel Navigation Buttons */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-prev {
+  left: 20px;
+}
+
+.carousel-next {
+  right: 20px;
+}
+
+[dir="rtl"] .carousel-prev {
+  left: auto;
+  right: 20px;
+}
+
+[dir="rtl"] .carousel-next {
+  right: auto;
+  left: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --font-main: 'IRANYekanX', sans-serif;
+  --white-20: rgba(255,255,255,0.2);
+  --white-25: rgba(255,255,255,0.25);
+  --white-30: rgba(255,255,255,0.3);
+  --white-60: rgba(255,255,255,0.6);
+  --black-10: rgba(0,0,0,0.1);
+  --text-color: #1a202c;
+  --blur-sm: blur(10px);
+  --blur-md: blur(12px);
+  --blur-lg: blur(15px);
+  --radius-lg: 1rem;
+}
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('../Fonts/IRANYekanX-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('../Fonts/IRANYekanX-Medium.woff2') format('woff2');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'IRANYekanX';
+  src: url('../Fonts/IRANYekanX-Bold.woff2') format('woff2');
+  font-weight: 700;
+}
+
+body {
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+}
+
+.glass {
+  background: var(--white-20);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  border-bottom: 1px solid var(--white-30);
+}
+
+.glass-header-menu {
+  background: var(--white-20);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  border: 1px solid var(--white-30);
+  box-shadow: 0 4px 20px var(--black-10);
+}
+
+.glass-caption {
+  background: var(--white-60);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.3s ease;
+  transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
+  opacity: 0;
+  color: var(--text-color);
+  box-shadow: 0 4px 20px var(--black-10);
+  border: 1px solid var(--white-30);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  max-height: 100%;
+  overflow: hidden;
+  will-change: transform;
+  box-sizing: border-box;
+}
+
+.portfolio-item:hover .glass-caption {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+.hero-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-indicator.active {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+  .hero-carousel {
+    height: 50vh;
+  }
+  
+  .carousel-item {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
+  .carousel-controls {
+    bottom: 10px;
+  }
+}
+
+.title-animation {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  transition: all 0.3s ease;
+  color: #2d3748;
+}
+
+.portfolio-item:hover .title-animation {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: break-word;
+}
+
+.justified-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 320px;
+  transform: translateZ(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.portfolio-item:hover .portfolio-image {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+}
+
+.header-menu {
+  position: relative;
+  padding: 8px 0;
+}
+
+.header-menu:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 240px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#mobile-menu {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#mobile-menu ul {
+  padding-left: 0;
+}
+
+#mobile-menu li {
+  list-style-type: none;
+}
+
+.mobile-submenu .submenu-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.mobile-submenu .submenu-content.active {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.mobile-menu-toggle {
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: right;
+}
+
+.mobile-menu-toggle:focus {
+  outline: 2px solid rgba(79, 70, 229, 0.5);
+  outline-offset: 2px;
+}
+
+.submenu-icon {
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .submenu-icon {
+  transform: rotate(180deg);
+}
+
+.mobile-content p, .mobile-content .step-description {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .mobile-content {
+    padding: 0 15px;
+  }
+  
+  #contact input, 
+  #contact textarea, 
+  #contact button {
+    min-height: 44px;
+  }
+  
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 20px;
+  }
+  
+  .mobile-content .justified-text {
+    line-height: 1.8;
+  }
+  
+  .mobile-submenu .submenu-content {
+    padding-left: 10px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .glass, .glass-header-menu, #mobile-menu {
+    -webkit-backdrop-filter: var(--blur-sm);
+    backdrop-filter: var(--blur-sm);
+  }
+  
+  .carousel-item {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  input, textarea, button {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+}
+
+#menu-btn svg path {
+  transition: 
+    -webkit-transform 0.3s ease,
+    transform 0.3s ease,
+    stroke 0.3s ease,
+    opacity 0.3s ease;
+  transform-origin: center;
+  -webkit-transform-origin: center;
+}
+
+#menu-btn[aria-expanded="true"] svg path:first-child {
+  -webkit-transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
+  stroke: #ff0000;
+}
+
+#menu-btn[aria-expanded="true"] svg path:last-child {
+  -webkit-transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
+  stroke: #ff0000;
+}
+
+#menu-btn[aria-expanded="true"] svg path:nth-child(2) {
+  opacity: 0;
+}
